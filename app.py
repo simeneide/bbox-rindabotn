@@ -5,6 +5,7 @@ import streamlit as st
 import pandas as pd
 import cv2
 import os
+import urllib
 
 video_sources = {
     'Rindabotn' : "http://217.17.213.66:8081/mjpg/video.mjpg?overview=0&camera=1&videoframeskipmode=empty&Axis-Orig-Sw=true&resolution=1280x720",
@@ -171,7 +172,7 @@ class ThreadedCamera(object):
         while True:
             if self.capture.isOpened():
                 (self.status, self.frame) = self.capture.read()
-
+            time.sleep(0.05)
     def grab_frame(self):
         if self.status:
             return self.frame
